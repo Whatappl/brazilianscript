@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="nojs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#070707">
+<title>Fearless FFH4X</title>
+<meta name="description" content="Fearless FFH4X — Free Fire scripts, configs and tools. Join for the latest drops.">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fearless FFH4X">
+<meta property="og:description" content="Free Fire scripts · configs · tools.">
+<meta property="og:image" content="https://cdn.phototourl.com/member/2026-10-10-7eb7557d-14fb-496a-af57-e227d76bdb5b.jpg">
+<meta property="og:url" content="https://brazilianscript.netlify.app">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fearless FFH4X">
+<meta name="twitter:description" content="Free Fire scripts · configs · tools.">
+<meta name="twitter:image" content="https://cdn.phototourl.com/member/2026-10-10-7eb7557d-14fb-496a-af57-e227d76bdb5b.jpg">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%2300c853'/%3E%3Ctext x='16' y='22' font-family='Arial' font-size='14' font-weight='bold' text-anchor='middle' fill='%2304120a'%3EFF%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green:#00c853; --bright:#00e05e; --amber:#ffb020; --red:#ff4040;
+    --bg:#070707; --card:rgba(255,255,255,.035); --border:rgba(255,255,255,.07);
+    --dim:#8a8a8a; --faint:#565656;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family:'Sora', -apple-system, BlinkMacSystemFont, sans-serif;
+    background:var(--bg); color:#ededed;
+    min-height:100vh; overflow-x:hidden;
+    padding:44px 18px 110px;
+    display:flex; justify-content:center; position:relative;
+    transition:background .4s;
+  }
+  html[dir="rtl"] body { font-family:'Noto Kufi Arabic', 'Sora', sans-serif; }
+  body.lite { background:#050505; }
+  body.lite .aurora, body.lite #stars, body.lite::after { display:none; }
+  body.lite .link { backdrop-filter:none; }
+
+  /* NOSCRIPT fallback */
+  html.nojs .wrap, html.nojs #nav, html.nojs #pwa, html.nojs #progress,
+  html.nojs .aurora, html.nojs #stars, html.nojs #confetti { display:none !important; }
+  #noscript {
+    display:none; max-width:440px;
+    padding:24px; margin:20px auto;
+    background:var(--card); border:1px solid var(--border);
+    border-radius:16px; line-height:1.8;
+  }
+  html.nojs #noscript { display:block; }
+  #noscript h2 { font-size:18px; margin-bottom:10px; color:#fff; }
+  #noscript p { color:#888; font-size:13px; margin-bottom:14px; }
+  #noscript a { color:var(--bright); display:block; padding:9px 0; font-size:13px; border-bottom:1px solid rgba(255,255,255,.04); text-decoration:none; }
+  #noscript a:last-child { border-bottom:none; }
+
+  .aurora { position:fixed; inset:-20%; z-index:-2; filter:blur(80px); opacity:.55; pointer-events:none; }
+  .aurora span { position:absolute; border-radius:50%; mix-blend-mode:screen; }
+  .a1 { width:480px; height:480px; background:#00c853; top:5%; left:-10%; animation:d1 18s ease-in-out infinite; }
+  .a2 { width:420px; height:420px; background:#0077ff; top:45%; right:-15%; animation:d2 22s ease-in-out infinite; }
+  .a3 { width:380px; height:380px; background:#00e0a0; bottom:-10%; left:25%; animation:d3 26s ease-in-out infinite; opacity:.6; }
+  @keyframes d1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(60px,80px) scale(1.15)} }
+  @keyframes d2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-70px,-50px) scale(1.1)} }
+  @keyframes d3 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(40px,-70px) scale(1.2)} }
+
+  #stars, #confetti { position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.7; }
+  #confetti { z-index:999; opacity:0; transition:opacity .3s; }
+  #confetti.on { opacity:1; }
+  body::after {
+    content:''; position:fixed; inset:0; z-index:1; pointer-events:none; opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap { width:100%; max-width:440px; position:relative; z-index:2; }
+
+  #progress {
+    position:fixed; top:0; left:0; height:3px; width:0%;
+    background:linear-gradient(90deg, var(--green), var(--bright));
+    z-index:999; transition:width .1s linear;
+    box-shadow:0 0 10px rgba(0,224,94,.5);
+  }
+
+  .reveal { opacity:0; transform:translateY(18px); animation:rise .65s cubic-bezier(.22,1,.36,1) forwards; }
+  @keyframes rise { to { opacity:1; transform:none; } }
+  .d1{animation-delay:.05s} .d2{animation-delay:.13s} .d3{animation-delay:.21s}
+  .d4{animation-delay:.29s} .d5{animation-delay:.37s} .d6{animation-delay:.45s}
+  .d7{animation-delay:.53s} .d8{animation-delay:.61s} .d9{animation-delay:.69s} .d10{animation-delay:.77s}
+
+  .topbar { position:absolute; top:-14px; right:0; z-index:10; display:flex; gap:6px; }
+  .lang-btn {
+    display:flex; align-items:center; gap:6px;
+    padding:7px 12px; border-radius:20px;
+    background:var(--card); border:1px solid var(--border);
+    color:#ccc; font-family:inherit; font-size:11.5px; font-weight:600;
+    cursor:pointer; backdrop-filter:blur(10px); transition:all .2s;
+  }
+  .lang-btn:hover { color:var(--bright); border-color:rgba(0,200,83,.35); }
+  .lang-btn svg { width:14px; height:14px; stroke:currentColor; stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+  .lang-btn .flag { font-size:14px; line-height:1; }
+
+  .lang-menu {
+    position:absolute; top:calc(100% + 6px); right:0;
+    min-width:170px; padding:6px;
+    background:rgba(15,15,15,.96);
+    backdrop-filter:blur(20px) saturate(140%);
+    -webkit-backdrop-filter:blur(20px) saturate(140%);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:14px;
+    box-shadow:0 14px 40px rgba(0,0,0,.7);
+    opacity:0; pointer-events:none; transform:translateY(-6px) scale(.98);
+    transition:all .2s cubic-bezier(.34,1.56,.64,1);
+    z-index:20;
+  }
+  .lang-menu.open { opacity:1; pointer-events:auto; transform:translateY(0) scale(1); }
+  .lang-menu button {
+    display:flex; align-items:center; gap:10px;
+    width:100%; padding:10px 12px;
+    background:transparent; border:none; cursor:pointer;
+    color:#ccc; font-family:inherit; font-size:13px; font-weight:500;
+    border-radius:9px; text-align:start; transition:all .15s;
+  }
+  .lang-menu button:hover { background:rgba(0,200,83,.1); color:var(--bright); }
+  .lang-menu button.active { background:rgba(0,200,83,.14); color:var(--bright); }
+  .lang-menu .flag { font-size:16px; line-height:1; }
+  .lang-menu .native { font-size:11px; color:var(--faint); margin-inline-start:auto; }
+  .lang-menu button.active .native { color:var(--bright); opacity:.7; }
+
+  /* RTL overrides */
+  html[dir="rtl"] #progress { left:auto; right:0; }
+  html[dir="rtl"] .topbar { right:auto; left:0; }
+  html[dir="rtl"] .lang-menu { right:auto; left:0; }
+  html[dir="rtl"] .link:hover .arrow { transform:translateX(-3px); }
+  html[dir="rtl"] .arrow svg { transform:scaleX(-1); }
+  html[dir="rtl"] .opt .bar { left:auto; right:0; background:linear-gradient(270deg, rgba(0,200,83,.18), rgba(0,224,94,.1)); }
+  html[dir="rtl"] .opt .row { flex-direction:row-reverse; }
+  html[dir="rtl"] .stat b { direction:ltr; }
+  html[dir="rtl"] .countdown .time { direction:ltr; }
+  html[dir="rtl"] .archive-item span:last-child { direction:ltr; }
+  html[dir="rtl"] .group-label { padding-left:0; padding-right:5px; letter-spacing:0; }
+  html[dir="rtl"] .group-label .hint { letter-spacing:0; }
+  html[dir="rtl"] .acc summary { text-align:right; }
+  html[dir="rtl"] .acc .body ol { padding-inline-start:20px; }
+  html[dir="rtl"] .warn, html[dir="rtl"] .device { text-align:right; }
+  html[dir="rtl"] .poll h3 { letter-spacing:0; }
+  html[dir="rtl"] .footer .updated { direction:ltr; display:inline-block; }
+
+  .profile { text-align:center; margin-bottom:28px; margin-top:20px; }
+  .ring-wrap { position:relative; width:128px; height:128px; margin:0 auto 16px; }
+  .gate-ring { position:absolute; inset:0; width:128px; height:128px; transform:rotate(-90deg); pointer-events:none; }
+  .gate-ring circle { fill:none; stroke-width:3; stroke-linecap:round; }
+  .gate-ring .bg { stroke:rgba(255,255,255,.06); }
+  .gate-ring .fill {
+    stroke:url(#gring);
+    stroke-dasharray:377;
+    stroke-dashoffset:377;
+    transition:stroke-dashoffset .7s cubic-bezier(.22,1,.36,1);
+    filter:drop-shadow(0 0 6px rgba(0,224,94,.5));
+  }
+  .ring {
+    position:absolute; inset:10px;
+    border-radius:50%; padding:3px;
+    background:conic-gradient(from 0deg, #00c853, #00e0a0, #0077ff, #00c853);
+    animation:spin 6s linear infinite;
+  }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  .ring::after { content:''; position:absolute; inset:3px; border-radius:50%; background:var(--bg); }
+  .avatar { width:100%; height:100%; border-radius:50%; overflow:hidden; position:relative; z-index:1; animation:spin 6s linear infinite reverse; }
+  .avatar img { width:100%; height:100%; object-fit:cover; display:block; }
+
+  h1 { font-size:23px; font-weight:800; letter-spacing:-.5px; margin-bottom:5px; }
+  html[dir="rtl"] h1 { letter-spacing:0; }
+  h1 .g { background:linear-gradient(90deg, #00e05e, #00e0a0); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .tag { font-size:12.5px; color:var(--dim); }
+
+  .status {
+    display:inline-flex; align-items:center; gap:6px; margin-top:12px;
+    font-size:11px; font-weight:600; padding:5px 12px; border-radius:30px;
+    background:rgba(0,200,83,.08); color:var(--bright);
+    border:1px solid rgba(0,200,83,.22);
+  }
+  .pulse { width:7px; height:7px; border-radius:50%; background:var(--bright); box-shadow:0 0 0 0 rgba(0,224,94,.6); animation:pulse 2s infinite; }
+  @keyframes pulse {
+    0% { box-shadow:0 0 0 0 rgba(0,224,94,.55); }
+    70% { box-shadow:0 0 0 9px rgba(0,224,94,0); }
+    100% { box-shadow:0 0 0 0 rgba(0,224,94,0); }
+  }
+
+  .live { display:inline-flex; align-items:center; gap:6px; margin-top:8px; font-size:10.5px; color:var(--dim); }
+  .live .dot { width:6px; height:6px; border-radius:50%; background:var(--red); animation:blink 1.4s infinite; }
+  @keyframes blink { 50% { opacity:.3; } }
+
+  .countdown {
+    background:linear-gradient(135deg, rgba(0,200,83,.08), rgba(0,119,255,.06));
+    border:1px solid rgba(0,200,83,.2); border-radius:14px;
+    padding:14px; margin-bottom:18px; text-align:center;
+  }
+  .countdown .lbl { font-size:10px; text-transform:uppercase; letter-spacing:1.4px; color:var(--faint); margin-bottom:6px; font-weight:600; }
+  html[dir="rtl"] .countdown .lbl { letter-spacing:0; }
+  .countdown .time { font-family:'JetBrains Mono', monospace; font-size:20px; font-weight:600; color:var(--bright); letter-spacing:1px; direction:ltr; }
+
+  .refresh-chip {
+    display:flex; align-items:center; justify-content:center; gap:6px;
+    font-size:10.5px; color:var(--faint); margin:-10px 0 18px;
+    cursor:pointer; transition:color .2s;
+    padding:6px 0;
+  }
+  .refresh-chip:hover { color:var(--bright); }
+  .refresh-chip svg { width:11px; height:11px; stroke:currentColor; stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+  .refresh-chip.spinning svg { animation:spin 1s linear; }
+
+  .device {
+    display:none; align-items:center; gap:8px; padding:10px 14px;
+    border-radius:11px; margin-bottom:16px; font-size:11.5px; font-weight:500;
+  }
+  .device.show { display:flex; }
+  .device.android { background:rgba(0,200,83,.08); color:var(--bright); border:1px solid rgba(0,200,83,.2); }
+  .device.ios { background:rgba(255,176,32,.08); color:var(--amber); border:1px solid rgba(255,176,32,.25); }
+  .device svg { width:14px; height:14px; stroke:currentColor; stroke-width:2; fill:none; }
+
+  .warn {
+    display:flex; gap:10px; padding:12px 14px;
+    background:rgba(255,176,32,.06); border:1px solid rgba(255,176,32,.25);
+    border-radius:12px; margin-bottom:18px;
+    font-size:11.5px; color:#d9b878; line-height:1.6;
+  }
+  .warn svg { width:16px; height:16px; stroke:var(--amber); stroke-width:2; fill:none; flex-shrink:0; margin-top:1px; }
+  .warn b { color:var(--amber); }
+
+  .stats { display:grid; grid-template-columns:repeat(4, 1fr); gap:7px; margin-bottom:22px; }
+  .stat {
+    text-align:center; padding:11px 4px;
+    background:var(--card); border:1px solid var(--border);
+    border-radius:11px; backdrop-filter:blur(10px);
+    transition:border-color .3s;
+  }
+  .stat.hot { border-color:rgba(0,200,83,.4); }
+  .stat b { display:block; font-size:14px; font-weight:700; color:#fff; font-variant-numeric:tabular-nums; }
+  .stat b.live { color:var(--bright); }
+  .stat span { font-size:8.5px; color:var(--faint); text-transform:uppercase; letter-spacing:.6px; }
+  html[dir="rtl"] .stat span { letter-spacing:0; }
+
+  .group { margin-bottom:20px; }
+  .group-label {
+    font-size:10.5px; text-transform:uppercase; letter-spacing:1.6px;
+    color:var(--faint); margin-bottom:10px; padding-left:5px; font-weight:600;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .group-label .hint { font-size:9px; color:#3a3a3a; letter-spacing:.4px; text-transform:none; font-weight:400; }
+
+  /* POLL */
+  .poll {
+    background:var(--card); border:1px solid var(--border);
+    border-radius:15px; padding:16px; backdrop-filter:blur(10px);
+    margin-bottom:22px;
+  }
+  .poll h3 { font-size:14px; font-weight:600; margin-bottom:6px; letter-spacing:-.2px; line-height:1.4; }
+  .poll h3 span { color:var(--bright); }
+  .poll .sub {
+    font-size:10.5px; color:var(--faint); margin-bottom:14px;
+    display:flex; align-items:center; gap:6px;
+  }
+  .poll .sub .live-dot {
+    width:6px; height:6px; border-radius:50%; background:var(--red);
+    animation:blink 1.4s infinite;
+  }
+  .opt {
+    position:relative;
+    padding:12px 14px; margin-bottom:8px;
+    background:rgba(255,255,255,.03);
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:11px; cursor:pointer;
+    overflow:hidden;
+    transition:border-color .2s, transform .15s cubic-bezier(.34,1.56,.64,1);
+  }
+  .opt:hover { border-color:rgba(0,200,83,.4); }
+  .opt:active { transform:scale(.98); }
+  .opt.voted { cursor:default; border-color:rgba(0,200,83,.35); }
+  .opt .bar {
+    position:absolute; left:0; top:0; bottom:0;
+    width:0%;
+    background:linear-gradient(90deg, rgba(0,200,83,.18), rgba(0,224,94,.1));
+    transition:width .8s cubic-bezier(.22,1,.36,1);
+    pointer-events:none;
+  }
+  .opt .row {
+    position:relative; z-index:1;
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    font-size:13.5px; font-weight:500;
+  }
+  .opt .pct {
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px; font-weight:600;
+    color:var(--bright); opacity:0;
+    transition:opacity .4s .4s;
+    font-variant-numeric:tabular-nums;
+    direction:ltr;
+  }
+  .opt.voted .pct, .poll.results .pct { opacity:1; }
+  .opt .dot {
+    width:16px; height:16px; border-radius:50%;
+    border:2px solid rgba(255,255,255,.15);
+    flex-shrink:0; transition:all .3s;
+    display:grid; place-items:center;
+  }
+  .opt .dot::after {
+    content:''; width:8px; height:8px; border-radius:50%;
+    background:var(--bright); transform:scale(0);
+    transition:transform .3s cubic-bezier(.34,1.56,.64,1);
+  }
+  .opt.voted .dot { border-color:var(--bright); }
+  .opt.voted .dot::after { transform:scale(1); }
+  .poll .meta {
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:11px; color:var(--faint); margin-top:10px;
+    padding-top:10px; border-top:1px solid rgba(255,255,255,.04);
+  }
+  .poll .meta b { color:var(--bright); font-family:'JetBrains Mono', monospace; font-weight:600; }
+
+  .link {
+    display:flex; align-items:center; gap:13px;
+    padding:15px 16px; background:var(--card);
+    border:1px solid var(--border); border-radius:15px;
+    color:#dcdcdc; text-decoration:none;
+    font-size:14.5px; font-weight:500; margin-bottom:10px;
+    backdrop-filter:blur(10px);
+    transition:transform .15s cubic-bezier(.34,1.56,.64,1), border-color .2s, background .2s, box-shadow .2s, opacity .3s;
+    position:relative; overflow:hidden;
+  }
+  .link::before {
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(0,200,83,.16), transparent 60%);
+    opacity:0; transition:opacity .25s;
+  }
+  .link:hover::before { opacity:1; }
+  .link:hover { border-color:rgba(0,200,83,.45); transform:translateY(-2px); box-shadow:0 10px 26px rgba(0,0,0,.5); }
+  .link:active { transform:scale(.98); }
+
+  .ico {
+    width:38px; height:38px; border-radius:11px;
+    display:grid; place-items:center;
+    background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.05);
+    flex-shrink:0; position:relative; z-index:1; color:var(--bright);
+  }
+  .ico svg { width:18px; height:18px; stroke:currentColor; stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+
+  .txt { flex:1; min-width:0; position:relative; z-index:1; }
+  .txt small { display:block; font-size:11px; color:var(--faint); font-weight:400; margin-top:3px; }
+
+  .arrow { color:#3d3d3d; flex-shrink:0; transition:transform .2s, color .2s; position:relative; z-index:1; }
+  .arrow svg { width:16px; height:16px; stroke:currentColor; stroke-width:2.4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+  .link:hover .arrow { transform:translateX(3px); color:var(--green); }
+
+  .check {
+    width:24px; height:24px; border-radius:50%; flex-shrink:0;
+    border:2px solid rgba(255,255,255,.15);
+    display:grid; place-items:center; transition:all .35s cubic-bezier(.34,1.56,.64,1);
+    position:relative; z-index:1;
+  }
+  .check svg { width:13px; height:13px; stroke:#04120a; stroke-width:3; fill:none; stroke-linecap:round; stroke-linejoin:round; opacity:0; transform:scale(.5); transition:all .3s .1s; }
+  .link.done .check { background:var(--bright); border-color:var(--bright); }
+  .link.done .check svg { opacity:1; transform:scale(1); }
+
+  .copy {
+    width:32px; height:32px; border-radius:9px; flex-shrink:0;
+    background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.06);
+    display:grid; place-items:center; cursor:pointer;
+    color:var(--faint); transition:all .2s; z-index:1; position:relative;
+  }
+  .copy:hover { color:var(--green); border-color:rgba(0,200,83,.35); }
+  .copy svg { width:14px; height:14px; stroke:currentColor; stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+
+  .link.primary {
+    background:linear-gradient(135deg, #00c853, #00a344);
+    border-color:transparent; color:#04120a; font-weight:700;
+    box-shadow:0 8px 26px rgba(0,200,83,.28);
+  }
+  .link.primary .ico { background:rgba(0,0,0,.16); border-color:transparent; color:#04120a; }
+  .link.primary .txt small { color:rgba(0,0,0,.55); }
+  .link.primary .arrow { color:rgba(0,0,0,.45); }
+  .link.primary:hover .arrow { color:#04120a; }
+  .link.primary .copy { background:rgba(0,0,0,.12); border-color:transparent; color:rgba(0,0,0,.6); }
+
+  .link.locked {
+    background:rgba(255,255,255,.025);
+    border-color:rgba(255,255,255,.05);
+    color:#5a5a5a;
+    cursor:not-allowed; box-shadow:none; pointer-events:none;
+  }
+  .link.locked .ico { color:#3a3a3a; }
+  .link.locked .txt small { color:#4a4a4a; }
+  .link.locked .arrow, .link.locked .copy { display:none; }
+  .link.locked .lock { display:grid; }
+
+  .lock {
+    display:none; width:32px; height:32px; border-radius:9px; flex-shrink:0;
+    place-items:center;
+    background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06);
+    color:#4a4a4a; position:relative; z-index:1;
+  }
+  .lock svg { width:14px; height:14px; stroke:currentColor; stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+
+  .link.unlocking { animation:unlock .7s cubic-bezier(.34,1.56,.64,1) forwards; }
+  @keyframes unlock {
+    0% { transform:scale(.98); }
+    40% { transform:scale(1.03); box-shadow:0 0 0 6px rgba(0,200,83,.15); }
+    100% { transform:scale(1); }
+  }
+
+  .gate-note {
+    font-size:10.5px; color:var(--faint); text-align:center;
+    margin:-4px 0 6px; line-height:1.5;
+  }
+  .gate-note b { color:var(--green); }
+
+  .copy-all {
+    display:flex; align-items:center; justify-content:center; gap:7px;
+    width:100%; padding:11px; margin-top:-4px;
+    background:rgba(255,255,255,.025); border:1px dashed rgba(255,255,255,.12);
+    border-radius:11px; color:var(--faint); font-family:inherit;
+    font-size:11.5px; font-weight:600; cursor:pointer;
+    transition:all .2s;
+  }
+  .copy-all:hover { color:var(--bright); border-color:rgba(0,200,83,.4); background:rgba(0,200,83,.05); }
+  .copy-all svg { width:13px; height:13px; stroke:currentColor; stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(3px)} }
+  .bounce { animation:bounce 1.6s ease-in-out infinite; }
+
+  .preview { border-radius:15px; overflow:hidden; border:1px solid var(--border); margin-bottom:20px; background:#101010; position:relative; }
+  .preview img { width:100%; display:block; transition:transform .5s; }
+  .preview:hover img { transform:scale(1.03); }
+
+  .acc {
+    border:1px solid var(--border); border-radius:14px;
+    background:var(--card); backdrop-filter:blur(10px);
+    margin-bottom:10px; overflow:hidden;
+  }
+  .acc summary {
+    padding:15px 16px; cursor:pointer; font-size:14px; font-weight:600;
+    list-style:none; display:flex; align-items:center; justify-content:space-between;
+    transition:color .2s;
+  }
+  .acc summary::-webkit-details-marker { display:none; }
+  .acc summary:hover { color:var(--bright); }
+  .acc summary .chev { transition:transform .3s; color:var(--faint); display:flex; }
+  .acc summary .chev svg { width:14px; height:14px; stroke:currentColor; stroke-width:2.4; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+  .acc[open] summary .chev { transform:rotate(180deg); color:var(--green); }
+  .acc .body {
+    padding:14px 16px 16px; font-size:13px; color:#a8a8a8;
+    line-height:1.75; border-top:1px solid var(--border); margin-top:2px;
+  }
+  .acc .body ol { padding-inline-start:18px; }
+  .acc .body li { margin-bottom:7px; }
+  .acc .body code {
+    font-family:'JetBrains Mono', monospace; font-size:12px;
+    color:var(--bright); background:rgba(0,200,83,.08);
+    padding:2px 6px; border-radius:5px;
+  }
+
+  .feedback { display:flex; gap:8px; margin-top:10px; }
+  .fb {
+    flex:1; padding:10px; border-radius:10px;
+    border:1px solid var(--border); background:var(--card);
+    color:#ccc; font-family:inherit; font-size:12px; font-weight:600;
+    cursor:pointer; transition:all .2s;
+  }
+  .fb:hover { border-color:rgba(0,200,83,.35); }
+  .fb.yes:hover { color:var(--bright); }
+  .fb.no:hover { color:var(--red); border-color:rgba(255,64,64,.3); }
+
+  .archive-item {
+    display:flex; justify-content:space-between; align-items:center;
+    padding:9px 0; font-size:12.5px; color:#aaa;
+    border-bottom:1px solid rgba(255,255,255,.04);
+  }
+  .archive-item:last-child { border-bottom:none; }
+  .archive-item span:last-child { font-size:10.5px; color:var(--faint); font-family:'JetBrains Mono', monospace; direction:ltr; }
+
+  .qr-block {
+    display:none; padding:16px; text-align:center;
+    background:var(--card); border:1px solid var(--border);
+    border-radius:14px; margin-bottom:20px;
+  }
+  .qr-block.show { display:block; }
+  .qr-block img { width:130px; height:130px; border-radius:8px; background:#fff; padding:6px; }
+  .qr-block p { font-size:11px; color:var(--dim); margin-top:8px; }
+
+  .desktop-hint {
+    display:none; align-items:center; justify-content:center; gap:7px;
+    font-size:11px; color:var(--faint); margin-bottom:16px;
+    padding:9px 12px; background:rgba(255,255,255,.02);
+    border:1px dashed rgba(255,255,255,.1); border-radius:11px;
+    text-align:center;
+  }
+  .desktop-hint.show { display:flex; }
+  .desktop-hint svg { width:13px; height:13px; stroke:currentColor; stroke-width:2; fill:none; }
+
+  #toast {
+    position:fixed; bottom:96px; left:50%;
+    transform:translateX(-50%) translateY(80px);
+    background:#141414; color:var(--bright);
+    padding:11px 20px; border-radius:30px;
+    font-size:12.5px; font-weight:600;
+    border:1px solid rgba(0,200,83,.3);
+    box-shadow:0 10px 30px rgba(0,0,0,.6);
+    z-index:1000; opacity:0;
+    transition:all .35s cubic-bezier(.34,1.56,.64,1);
+    pointer-events:none;
+    white-space:nowrap;
+    max-width:80vw;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  #toast.show { transform:translateX(-50%) translateY(0); opacity:1; }
+
+  #pwa {
+    position:fixed; left:14px; right:14px; bottom:88px; z-index:998;
+    background:linear-gradient(135deg, #0f1810, #0a140c);
+    border:1px solid rgba(0,200,83,.25); border-radius:16px;
+    padding:14px 16px; display:none; align-items:center; gap:12px;
+    box-shadow:0 14px 40px rgba(0,0,0,.7);
+    animation:rise .4s ease-out;
+  }
+  #pwa.show { display:flex; }
+  #pwa .txt { flex:1; font-size:12px; color:#ccc; line-height:1.4; }
+  #pwa .txt b { color:#fff; display:block; font-size:13px; margin-bottom:2px; }
+  #pwa button { background:var(--green); color:#04120a; border:none; padding:9px 14px; border-radius:9px; font-family:inherit; font-size:12px; font-weight:700; cursor:pointer; }
+  #pwa .dismiss { background:transparent; color:#666; padding:4px; }
+
+  .share {
+    width:100%; padding:13px; border-radius:13px;
+    background:rgba(255,255,255,.04); border:1px solid var(--border);
+    color:#ccc; font-family:inherit; font-size:13px; font-weight:600;
+    cursor:pointer; margin-bottom:20px;
+    display:flex; align-items:center; justify-content:center; gap:9px;
+    transition:all .2s;
+  }
+  .share:hover { border-color:rgba(0,200,83,.4); color:var(--bright); }
+  .share svg { width:16px; height:16px; stroke:currentColor; stroke-width:2; fill:none; }
+
+  #nav {
+    position:fixed; left:50%; transform:translateX(-50%);
+    bottom:14px; z-index:997;
+    display:flex; gap:4px; padding:6px;
+    background:rgba(15,15,15,.85);
+    backdrop-filter:blur(20px) saturate(140%);
+    -webkit-backdrop-filter:blur(20px) saturate(140%);
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:36px;
+    box-shadow:0 14px 40px rgba(0,0,0,.7);
+  }
+  #nav a, #nav button {
+    width:60px; height:48px; border-radius:28px;
+    display:grid; place-items:center; gap:2px;
+    background:transparent; border:none; cursor:pointer;
+    color:#666; font-family:inherit; text-decoration:none;
+    transition:color .2s, background .2s;
+    position:relative;
+  }
+  #nav a:hover, #nav button:hover { color:var(--bright); background:rgba(0,200,83,.06); }
+  #nav a.active, #nav button.active { color:var(--bright); }
+  #nav svg { width:20px; height:20px; stroke:currentColor; stroke-width:2; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+  #nav small { font-size:8.5px; font-weight:600; letter-spacing:.3px; }
+  #nav .nav-label { display:flex; flex-direction:column; align-items:center; gap:1px; }
+
+  .footer { text-align:center; font-size:11px; color:#3a3a3a; margin-top:30px; line-height:1.9; padding-bottom:20px; }
+  .footer b { color:var(--green); font-weight:600; }
+  .footer .updated { font-family:'JetBrains Mono', monospace; font-size:10px; color:#4a4a4a; direction:ltr; }
+  .footer .lite-toggle {
+    display:inline-flex; align-items:center; gap:6px;
+    margin-top:12px; font-size:11px; color:var(--faint);
+    cursor:pointer; padding:6px 12px; border-radius:20px;
+    border:1px solid var(--border); background:var(--card);
+    transition:all .2s;
+  }
+  .footer .lite-toggle:hover { color:var(--bright); border-color:rgba(0,200,83,.3); }
+  .footer .lite-toggle svg { width:12px; height:12px; stroke:currentColor; stroke-width:2; fill:none; }
+  .footer .lite-toggle.on { color:var(--bright); border-color:rgba(0,200,83,.4); background:rgba(0,200,83,.08); }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation:none !important; transition:none !important; }
+    .reveal { opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.remove('nojs')</script>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="gring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00c853"/>
+      <stop offset="100%" stop-color="#00e0a0"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div id="progress"></div>
+<div class="aurora" aria-hidden="true"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
+<canvas id="stars" aria-hidden="true"></canvas>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<!-- NOSCRIPT -->
+<div id="noscript">
+  <h2>Fearless FFH4X</h2>
+  <p>JavaScript is off. Direct links:</p>
+  <a href="https://www.youtube.com/@fearlessxitt" target="_blank" rel="noopener">YouTube — @fearlessxitt</a>
+  <a href="https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E" target="_blank" rel="noopener">WhatsApp — Main Channel</a>
+  <a href="https://whatsapp.com/channel/0029Vb8dD7a5q08gPKk13w2R" target="_blank" rel="noopener">WhatsApp — Backup</a>
+  <a href="https://whatsapp.com/channel/0029VbEGYSlIXnlnVTIs1b2P" target="_blank" rel="noopener">WhatsApp — Backup 2.0</a>
+  <a href="https://www.mediafire.com/file/ncst88u062que9t/Brazilian+Aimbot+Script+%F0%9F%87%A7%F0%9F%87%B7%E2%9A%99%EF%B8%8F.7z/file" target="_blank" rel="noopener">Download — Brazilian Aimbot Script</a>
+  <a href="https://youtu.be/aws5mZaQAkU" target="_blank" rel="noopener">Tutorial + File Password</a>
+</div>
+
+<div class="wrap">
+
+  <div class="topbar">
+    <button class="lang-btn" id="langBtn" aria-label="Language">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <span class="flag" id="langFlag">🇬🇧</span>
+      <span id="langCode">EN</span>
+    </button>
+    <div class="lang-menu" id="langMenu">
+      <button data-lang="en"><span class="flag">🇬🇧</span> English <span class="native">EN</span></button>
+      <button data-lang="es"><span class="flag">🇪🇸</span> Español <span class="native">ES</span></button>
+      <button data-lang="pt"><span class="flag">🇧🇷</span> Português <span class="native">PT</span></button>
+      <button data-lang="id"><span class="flag">🇮🇩</span> Indonesia <span class="native">ID</span></button>
+      <button data-lang="ar"><span class="flag">🇸🇦</span> العربية <span class="native">AR</span></button>
+    </div>
+  </div>
+
+  <!-- PROFILE -->
+  <div class="profile reveal d1">
+    <div class="ring-wrap">
+      <svg class="gate-ring" viewBox="0 0 128 128" aria-hidden="true">
+        <circle class="bg" cx="64" cy="64" r="60"/>
+        <circle class="fill" id="gateFill" cx="64" cy="64" r="60"/>
+      </svg>
+      <div class="ring">
+        <div class="avatar">
+          <img src="https://cdn.phototourl.com/member/2026-10-10-a6ca5db4-4610-4e08-8160-31c670eeb36c.jpg" alt="Fearless FFH4X">
+        </div>
+      </div>
+    </div>
+    <h1>Fearless <span class="g">FFH4X</span></h1>
+    <p class="tag" data-i18n="tag">Free Fire scripts · configs · tools</p>
+    <div class="status"><span class="pulse"></span> <span data-i18n="status">Online</span></div>
+    <div class="live"><span class="dot"></span><span id="liveNow">—</span></div>
+  </div>
+
+  <div class="device" id="deviceStrip"></div>
+
+  <div class="countdown reveal d2">
+    <div class="lbl" data-i18n="countdownLbl">Next drop</div>
+    <div class="time" id="countdown">--:--:--</div>
+  </div>
+
+  <div class="refresh-chip" id="refreshChip">
+    <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+    <span id="refreshText" data-i18n="refreshNow">Tap to refresh</span>
+  </div>
+
+  <div class="stats reveal d3">
+    <div class="stat" id="statVisits"><b id="visits" class="live">—</b><span data-i18n="statVisits">Visits</span></div>
+    <div class="stat"><b id="today">—</b><span data-i18n="statToday">Today</span></div>
+    <div class="stat"><b id="downloads">—</b><span data-i18n="statDownloads">Downloads</span></div>
+    <div class="stat"><b id="clock">—</b><span data-i18n="statTime">Time</span></div>
+  </div>
+
+  <div class="warn reveal d4">
+    <svg viewBox="0 0 24 24"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    <div data-i18n-html="warn"><b>1.6 KB is a config, not the tool.</b> Read the tutorial before installing.</div>
+  </div>
+
+  <!-- STEP 1 — GATE -->
+  <div class="group reveal d5">
+    <div class="group-label">
+      <span data-i18n="step1">Step 1 — Join all</span>
+      <span class="hint" id="gateCount">0 / 4</span>
+    </div>
+    <a class="link join" href="https://www.youtube.com/@fearlessxitt" target="_blank" rel="noopener" data-copy="https://www.youtube.com/@fearlessxitt">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none"/></svg></span>
+      <span class="txt"><span data-i18n="yt">YouTube Channel</span><small data-i18n="ytSub">@fearlessxitt · videos + drops</small></span>
+      <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+    </a>
+    <a class="link join" href="https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E" target="_blank" rel="noopener" data-copy="https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+      <span class="txt"><span data-i18n="main">Main Channel</span><small data-i18n="mainSub">WhatsApp · updates first</small></span>
+      <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+    </a>
+    <a class="link join" href="https://whatsapp.com/channel/0029Vb8dD7a5q08gPKk13w2R" target="_blank" rel="noopener" data-copy="https://whatsapp.com/channel/0029Vb8dD7a5q08gPKk13w2R">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+      <span class="txt"><span data-i18n="backup">Backup</span><small>WhatsApp</small></span>
+      <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+    </a>
+    <a class="link join" href="https://whatsapp.com/channel/0029VbEGYSlIXnlnVTIs1b2P" target="_blank" rel="noopener" data-copy="https://whatsapp.com/channel/0029VbEGYSlIXnlnVTIs1b2P">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+      <span class="txt"><span data-i18n="backup2">Backup 2.0</span><small>WhatsApp</small></span>
+      <span class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>
+    </a>
+    <button class="copy-all" id="copyAll">
+      <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      <span data-i18n="copyAll">Copy all links</span>
+    </button>
+    <div style="text-align:center;margin-top:8px;">
+      <div class="gate-note" id="gateNote" data-i18n-html="gateNote">Open all four to unlock <b>Step 2</b>.</div>
+    </div>
+  </div>
+
+  <button class="share reveal d6" id="shareBtn">
+    <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+    <span data-i18n="shareBtn">Share this page</span>
+  </button>
+
+  <!-- STEP 2 — DOWNLOAD -->
+  <div class="group reveal d7">
+    <div class="group-label"><span data-i18n="step2">Step 2 — Download</span></div>
+    <a class="link primary locked" id="downloadBtn" href="https://www.mediafire.com/file/ncst88u062que9t/Brazilian+Aimbot+Script+%F0%9F%87%A7%F0%9F%87%B7%E2%9A%99%EF%B8%8F.7z/file" target="_blank" rel="noopener" data-copy="https://www.mediafire.com/file/ncst88u062que9t/Brazilian+Aimbot+Script+%F0%9F%87%A7%F0%9F%87%B7%E2%9A%99%EF%B8%8F.7z/file">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
+      <span class="txt">Brazilian Aimbot Script<small data-i18n="dlSub">v1.0 · 1.6 KB · 7z · password required</small></span>
+      <span class="lock"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+      <button class="copy" data-copy="https://www.mediafire.com/file/ncst88u062que9t/Brazilian+Aimbot+Script+%F0%9F%87%A7%F0%9F%87%B7%E2%9A%99%EF%B8%8F.7z/file" aria-label="Copy">
+        <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </a>
+    <a class="link" href="https://youtu.be/aws5mZaQAkU?si=B2M4-zoCthuVi2j3" target="_blank" rel="noopener" data-copy="https://youtu.be/aws5mZaQAkU">
+      <span class="ico"><svg viewBox="0 0 24 24"><polygon points="6 4 20 12 6 20 6 4" fill="currentColor" stroke="none"/></svg></span>
+      <span class="txt"><span data-i18n="tutTitle">Tutorial + File Password</span><small data-i18n="tutSub">YouTube walkthrough</small></span>
+      <button class="copy" data-copy="https://youtu.be/aws5mZaQAkU" aria-label="Copy">
+        <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+    </a>
+  </div>
+
+  <!-- LIVE POLL (below download) -->
+  <div class="poll reveal d8" id="poll">
+    <h3 data-i18n-html="pollQ">What should drop <span>next</span>?</h3>
+    <div class="sub"><span class="live-dot"></span><span data-i18n="pollLiveNow">Live · updates every 30s</span></div>
+    <div class="opt" data-key="poll-aimbot"><div class="bar"></div><div class="row"><span data-i18n="optAimbot">Aimbot config</span><span class="pct">0%</span><span class="dot"></span></div></div>
+    <div class="opt" data-key="poll-sens"><div class="bar"></div><div class="row"><span data-i18n="optSens">Sensitivity pack</span><span class="pct">0%</span><span class="dot"></span></div></div>
+    <div class="opt" data-key="poll-hud"><div class="bar"></div><div class="row"><span data-i18n="optHud">HUD layout</span><span class="pct">0%</span><span class="dot"></span></div></div>
+    <div class="opt" data-key="poll-macro"><div class="bar"></div><div class="row"><span data-i18n="optMacro">Macro tool</span><span class="pct">0%</span><span class="dot"></span></div></div>
+    <div class="meta">
+      <span><b id="pollTotal">0</b> <span data-i18n="pollVotes">votes</span></span>
+      <span id="pollMsg" data-i18n="pollTap">Tap to vote</span>
+    </div>
+  </div>
+
+  <div class="preview reveal d8">
+    <img src="https://cdn.phototourl.com/member/2026-10-10-7eb7557d-14fb-496a-af57-e227d76bdb5b.jpg" alt="Script preview">
+  </div>
+
+  <div class="qr-block" id="qrBlock">
+    <img id="qrImg" alt="QR">
+    <p data-i18n="qrText">Scan to open on your phone</p>
+  </div>
+
+  <div class="desktop-hint" id="desktopHint">
+    <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    <span data-i18n="deskHint">Desktop? Scan the QR above or copy the link</span>
+  </div>
+
+  <!-- REQUIREMENTS -->
+  <div class="group reveal d9">
+    <div class="group-label"><span data-i18n="reqLabel">Requirements</span></div>
+    <a class="link" href="https://www.mediafire.com/file/z3ul0hyub9pfulp/MT_MANGER_BY_FEARLESS_EXE.apk/file" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></span>
+      <span class="txt">MT Manager<small data-i18n="mtSub">by Fearless EXE · APK</small></span>
+      <span class="arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span>
+    </a>
+    <a class="link" href="https://www.mediafire.com/file/2qp87zx0na24ew4/shadowrocket-for-android-10-10-56.apk/file" target="_blank" rel="noopener">
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg></span>
+      <span class="txt">Shadowrocket<small data-i18n="srSub">Android · 10.10.56 · APK</small></span>
+      <span class="arrow"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></span>
+    </a>
+  </div>
+
+  <!-- HOW TO USE -->
+  <div class="group reveal d9">
+    <div class="group-label"><span data-i18n="howLabel">How to Use</span></div>
+    <details class="acc">
+      <summary><span data-i18n="acc1q">Why is the file only 1.6 KB?</span>
+        <span class="chev"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </summary>
+      <div class="body" data-i18n="acc1a">It's a config, not the tool.</div>
+    </details>
+    <details class="acc">
+      <summary><span data-i18n="acc2q">Install the script</span>
+        <span class="chev"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </summary>
+      <div class="body">
+        <ol>
+          <li data-i18n="acc2l1">Download the .7z from Step 2.</li>
+          <li data-i18n-html="acc2l2">Open with <b>MT Manager</b>.</li>
+          <li data-i18n="acc2l3">Enter the password from the tutorial video.</li>
+          <li data-i18n="acc2l4">Follow the video for placement.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="acc">
+      <summary><span data-i18n="acc3q">Troubleshooting</span>
+        <span class="chev"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </summary>
+      <div class="body">
+        <ol>
+          <li data-i18n="acc3l1">File won't open → reinstall MT Manager.</li>
+          <li data-i18n="acc3l2">Password rejected → copy exactly, no spaces.</li>
+          <li data-i18n="acc3l3">Link dead → check the WhatsApp channels.</li>
+        </ol>
+        <div class="feedback">
+          <button class="fb yes" data-fb="yes" data-i18n="fbYes">Works ✓</button>
+          <button class="fb no" data-fb="no" data-i18n="fbNo">Broken ✗</button>
+        </div>
+      </div>
+    </details>
+    <details class="acc">
+      <summary><span data-i18n="acc4q">Changelog</span>
+        <span class="chev"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </summary>
+      <div class="body"><div class="archive-item"><span data-i18n="cl1">v1.0 — initial release</span><span>2026-10-10</span></div></div>
+    </details>
+    <details class="acc">
+      <summary><span data-i18n="acc5q">Previously dropped</span>
+        <span class="chev"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></span>
+      </summary>
+      <div class="body"><div class="archive-item"><span>Brazilian Aimbot Script</span><span>2026-10-10</span></div></div>
+    </details>
+  </div>
+
+  <div class="footer reveal d10">
+    <b>Fearless FFH4X</b> © 2026<br>
+    <span class="updated" id="updated">Last updated 2026-10-10</span><br>
+    <span style="font-size:10px; color:#3a3a3a;" data-i18n="footNote">All downloads via MediaFire · verify before install</span><br>
+    <div class="lite-toggle" id="liteToggle">
+      <svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      <span id="liteLabel" data-i18n="liteMode">Lite mode</span>
+    </div>
+  </div>
+
+</div>
+
+<nav id="nav">
+  <a href="#" data-nav="top" aria-label="Top">
+    <div class="nav-label">
+      <svg viewBox="0 0 24 24"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <small data-i18n="navHome">Home</small>
+    </div>
+  </a>
+  <a href="#downloadBtn" data-nav="download" aria-label="Download">
+    <div class="nav-label">
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <small data-i18n="navGet">Get</small>
+    </div>
+  </a>
+  <button data-nav="share" aria-label="Share">
+    <div class="nav-label">
+      <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+      <small data-i18n="navShare">Share</small>
+    </div>
+  </button>
+  <button data-nav="status" aria-label="Status">
+    <div class="nav-label">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <small data-i18n="navStatus">Status</small>
+    </div>
+  </button>
+</nav>
+
+<div id="toast"></div>
+
+<div id="pwa">
+  <div class="txt"><b data-i18n="pwaTitle">Add to home screen</b><span data-i18n="pwaSub">Get drops faster.</span></div>
+  <button id="pwaInstall" data-i18n="pwaAdd">Add</button>
+  <button class="dismiss" id="pwaDismiss" aria-label="Dismiss">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+</div>
+
+<script>
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const NS = 'fearless-ffh4x';
+  const API = 'https://abacus.jasoncameron.dev';
+  const SHARE_URL = 'https://brazilianscript.netlify.app';
+
+  const T = {
+    en:{ _flag:'🇬🇧', _code:'EN', tag:'Free Fire scripts · configs · tools', status:'Online',
+      countdownLbl:'Next drop', refreshNow:'Tap to refresh', refreshAgo:'Updated {s}s ago',
+      statVisits:'Visits', statToday:'Today', statDownloads:'Downloads', statTime:'Time',
+      warn:'<b>1.6 KB is a config, not the tool.</b> Read the tutorial before installing.',
+      pollQ:'What should drop <span>next</span>?', pollLiveNow:'Live · updates every 30s',
+      optAimbot:'Aimbot config', optSens:'Sensitivity pack', optHud:'HUD layout', optMacro:'Macro tool',
+      pollVotes:'votes', pollTap:'Tap to vote',
+      step1:'Step 1 — Join all', step2:'Step 2 — Download',
+      yt:'YouTube Channel', ytSub:'@fearlessxitt · videos + drops', main:'Main Channel', mainSub:'WhatsApp · updates first', backup:'Backup', backup2:'Backup 2.0',
+      copyAll:'Copy all links', copyAllToast:'All links copied',
+      gateNote:'Open all four to unlock <b>Step 2</b>.',
+      shareBtn:'Share this page', dlSub:'v1.0 · 1.6 KB · 7z · password required',
+      tutTitle:'Tutorial + File Password', tutSub:'YouTube walkthrough',
+      reqLabel:'Requirements', mtSub:'by Fearless EXE · APK', srSub:'Android · 10.10.56 · APK',
+      howLabel:'How to Use',
+      acc1q:'Why is the file only 1.6 KB?', acc1a:"It's a config, not the tool. MT Manager and Shadowrocket do the heavy lifting. This file tells them what to do. Watch the tutorial.",
+      acc2q:'Install the script', acc2l1:'Download the .7z from Step 2.', acc2l2:'Open with <b>MT Manager</b>.', acc2l3:'Enter the password from the tutorial video.', acc2l4:'Follow the video for placement.',
+      acc3q:'Troubleshooting', acc3l1:"File won't open → reinstall MT Manager.", acc3l2:'Password rejected → copy exactly, no spaces.', acc3l3:'Link dead → check the WhatsApp channels.',
+      fbYes:'Works ✓', fbNo:'Broken ✗', acc4q:'Changelog', acc5q:'Previously dropped', cl1:'v1.0 — initial release',
+      qrText:'Scan to open on your phone', deskHint:'Desktop? Scan the QR above or copy the link',
+      footNote:'All downloads via MediaFire · verify before install', liteMode:'Lite mode', liteOn:'Lite on',
+      navHome:'Home', navGet:'Get', navShare:'Share', navStatus:'Status',
+      pwaTitle:'Add to home screen', pwaSub:'Get drops faster.', pwaAdd:'Add', updated:'Last updated',
+      viewing:'viewing now', copied:'Copied — paste to Status', copyFailed:'Copy failed', linkCopied:'Link copied',
+      voteCounted:'Vote counted', voted:'You already voted', thanksVote:'Thanks for voting',
+      unlocked:'Download unlocked', liteOnMsg:'Lite mode on', liteOffMsg:'Lite mode off',
+      shareMsgPre:'Fearless FFH4X — Free Fire scripts, configs & tools 🔥\nJoin the channel for the latest drops:\n',
+      androidDet:'Android detected · use MT Manager to open the file', iosDet:'iOS detected · this script targets Android only',
+      fwYes:'Thanks ✓', fwNo:'Noted', langSwitched:'Language: {x}' },
+    es:{ _flag:'🇪🇸', _code:'ES', tag:'Scripts, configs y herramientas para Free Fire', status:'En línea',
+      countdownLbl:'Próximo lanzamiento', refreshNow:'Toca para actualizar', refreshAgo:'Actualizado hace {s}s',
+      statVisits:'Visitas', statToday:'Hoy', statDownloads:'Descargas', statTime:'Hora',
+      warn:'<b>1.6 KB es una config, no la herramienta.</b> Lee el tutorial antes de instalar.',
+      pollQ:'¿Qué debería salir <span>ahora</span>?', pollLiveNow:'En vivo · actualiza cada 30s',
+      optAimbot:'Config de aimbot', optSens:'Pack de sensibilidad', optHud:'Diseño del HUD', optMacro:'Herramienta macro',
+      pollVotes:'votos', pollTap:'Toca para votar',
+      step1:'Paso 1 — Únete a todo', step2:'Paso 2 — Descargar',
+      yt:'Canal de YouTube', ytSub:'@fearlessxitt · videos + drops', main:'Canal principal', mainSub:'WhatsApp · primero las novedades', backup:'Respaldo', backup2:'Respaldo 2.0',
+      copyAll:'Copiar todos los enlaces', copyAllToast:'Enlaces copiados',
+      gateNote:'Abre los cuatro para desbloquear el <b>Paso 2</b>.',
+      shareBtn:'Compartir esta página', dlSub:'v1.0 · 1.6 KB · 7z · requiere contraseña',
+      tutTitle:'Tutorial + contraseña', tutSub:'Video en YouTube',
+      reqLabel:'Requisitos', mtSub:'por Fearless EXE · APK', srSub:'Android · 10.10.56 · APK',
+      howLabel:'Cómo usar',
+      acc1q:'¿Por qué el archivo pesa solo 1.6 KB?', acc1a:'Es una config, no la herramienta. MT Manager y Shadowrocket hacen el trabajo pesado. Este archivo les dice qué hacer. Mira el tutorial.',
+      acc2q:'Instala el script', acc2l1:'Descarga el .7z del Paso 2.', acc2l2:'Ábrelo con <b>MT Manager</b>.', acc2l3:'Ingresa la contraseña del video tutorial.', acc2l4:'Sigue el video para colocarlo.',
+      acc3q:'Solución de problemas', acc3l1:'El archivo no abre → reinstala MT Manager.', acc3l2:'Contraseña rechazada → cópiala exacta, sin espacios.', acc3l3:'Enlace caído → revisa los canales de WhatsApp.',
+      fbYes:'Funciona ✓', fbNo:'Roto ✗', acc4q:'Historial de cambios', acc5q:'Lanzado antes', cl1:'v1.0 — lanzamiento inicial',
+      qrText:'Escanea para abrir en tu teléfono', deskHint:'¿Escritorio? Escanea el QR o copia el enlace',
+      footNote:'Todas las descargas por MediaFire · verifica antes de instalar', liteMode:'Modo lite', liteOn:'Lite activo',
+      navHome:'Inicio', navGet:'Obtener', navShare:'Compartir', navStatus:'Estado',
+      pwaTitle:'Añadir a inicio', pwaSub:'Recibe antes los drops.', pwaAdd:'Añadir', updated:'Actualizado',
+      viewing:'viendo ahora', copied:'Copiado — pega en Status', copyFailed:'Error al copiar', linkCopied:'Enlace copiado',
+      voteCounted:'Voto contado', voted:'Ya votaste', thanksVote:'Gracias por votar',
+      unlocked:'Descarga desbloqueada', liteOnMsg:'Modo lite activado', liteOffMsg:'Modo lite apagado',
+      shareMsgPre:'Fearless FFH4X — Scripts, configs y herramientas para Free Fire 🔥\nÚnete al canal para las últimas novedades:\n',
+      androidDet:'Android detectado · usa MT Manager para abrir el archivo', iosDet:'iOS detectado · este script es solo para Android',
+      fwYes:'Gracias ✓', fwNo:'Anotado', langSwitched:'Idioma: {x}' },
+    pt:{ _flag:'🇧🇷', _code:'PT', tag:'Scripts, configs e ferramentas de Free Fire', status:'Online',
+      countdownLbl:'Próximo drop', refreshNow:'Toque para atualizar', refreshAgo:'Atualizado há {s}s',
+      statVisits:'Visitas', statToday:'Hoje', statDownloads:'Downloads', statTime:'Hora',
+      warn:'<b>1.6 KB é uma config, não a ferramenta.</b> Leia o tutorial antes de instalar.',
+      pollQ:'O que deve sair <span>agora</span>?', pollLiveNow:'Ao vivo · atualiza a cada 30s',
+      optAimbot:'Config de aimbot', optSens:'Pack de sensibilidade', optHud:'Layout do HUD', optMacro:'Ferramenta macro',
+      pollVotes:'votos', pollTap:'Toque para votar',
+      step1:'Passo 1 — Entre em todos', step2:'Passo 2 — Baixar',
+      yt:'Canal do YouTube', ytSub:'@fearlessxitt · vídeos + drops', main:'Canal principal', mainSub:'WhatsApp · novidades primeiro', backup:'Backup', backup2:'Backup 2.0',
+      copyAll:'Copiar todos os links', copyAllToast:'Links copiados',
+      gateNote:'Abra os quatro para liberar o <b>Passo 2</b>.',
+      shareBtn:'Compartilhar esta página', dlSub:'v1.0 · 1.6 KB · 7z · senha necessária',
+      tutTitle:'Tutorial + senha do arquivo', tutSub:'Vídeo no YouTube',
+      reqLabel:'Requisitos', mtSub:'por Fearless EXE · APK', srSub:'Android · 10.10.56 · APK',
+      howLabel:'Como usar',
+      acc1q:'Por que o arquivo tem só 1.6 KB?', acc1a:'É uma config, não a ferramenta. MT Manager e Shadowrocket fazem o trabalho pesado. Este arquivo diz o que fazer. Assista ao tutorial.',
+      acc2q:'Instale o script', acc2l1:'Baixe o .7z no Passo 2.', acc2l2:'Abra com o <b>MT Manager</b>.', acc2l3:'Digite a senha do vídeo tutorial.', acc2l4:'Siga o vídeo para posicionar.',
+      acc3q:'Solução de problemas', acc3l1:'Arquivo não abre → reinstale o MT Manager.', acc3l2:'Senha recusada → copie exato, sem espaços.', acc3l3:'Link morto → veja os canais do WhatsApp.',
+      fbYes:'Funciona ✓', fbNo:'Quebrado ✗', acc4q:'Changelog', acc5q:'Lançado antes', cl1:'v1.0 — lançamento inicial',
+      qrText:'Escaneie para abrir no celular', deskHint:'Desktop? Escaneie o QR ou copie o link',
+      footNote:'Todos os downloads via MediaFire · verifique antes de instalar', liteMode:'Modo lite', liteOn:'Lite ativo',
+      navHome:'Início', navGet:'Baixar', navShare:'Enviar', navStatus:'Status',
+      pwaTitle:'Adicionar à tela', pwaSub:'Receba drops mais rápido.', pwaAdd:'Adicionar', updated:'Atualizado',
+      viewing:'assistindo agora', copied:'Copiado — cole no Status', copyFailed:'Falha ao copiar', linkCopied:'Link copiado',
+      voteCounted:'Voto contado', voted:'Você já votou', thanksVote:'Obrigado por votar',
+      unlocked:'Download liberado', liteOnMsg:'Modo lite ativado', liteOffMsg:'Modo lite desligado',
+      shareMsgPre:'Fearless FFH4X — Scripts, configs e ferramentas de Free Fire 🔥\nEntre no canal para as novidades:\n',
+      androidDet:'Android detectado · use MT Manager para abrir o arquivo', iosDet:'iOS detectado · este script é só para Android',
+      fwYes:'Valeu ✓', fwNo:'Anotado', langSwitched:'Idioma: {x}' },
+    id:{ _flag:'🇮🇩', _code:'ID', tag:'Script, config & tool Free Fire', status:'Online',
+      countdownLbl:'Drop berikutnya', refreshNow:'Ketuk untuk refresh', refreshAgo:'Diperbarui {s}s lalu',
+      statVisits:'Kunjungan', statToday:'Hari ini', statDownloads:'Unduhan', statTime:'Waktu',
+      warn:'<b>1.6 KB itu config, bukan toolnya.</b> Baca tutorial sebelum install.',
+      pollQ:'Drop berikutnya <span>apa</span>?', pollLiveNow:'Live · update tiap 30s',
+      optAimbot:'Config aimbot', optSens:'Paket sensitivitas', optHud:'Layout HUD', optMacro:'Tool macro',
+      pollVotes:'suara', pollTap:'Ketuk untuk memilih',
+      step1:'Langkah 1 — Gabung semua', step2:'Langkah 2 — Download',
+      yt:'Channel YouTube', ytSub:'@fearlessxitt · video + drop', main:'Channel utama', mainSub:'WhatsApp · update pertama', backup:'Backup', backup2:'Backup 2.0',
+      copyAll:'Salin semua link', copyAllToast:'Semua link disalin',
+      gateNote:'Buka keempatnya untuk membuka <b>Langkah 2</b>.',
+      shareBtn:'Bagikan halaman ini', dlSub:'v1.0 · 1.6 KB · 7z · butuh password',
+      tutTitle:'Tutorial + password file', tutSub:'Video YouTube',
+      reqLabel:'Yang dibutuhkan', mtSub:'oleh Fearless EXE · APK', srSub:'Android · 10.10.56 · APK',
+      howLabel:'Cara pakai',
+      acc1q:'Kenapa file hanya 1.6 KB?', acc1a:'Itu config, bukan toolnya. MT Manager dan Shadowrocket yang kerja berat. File ini cuma kasih tahu caranya. Tonton tutorialnya.',
+      acc2q:'Install script', acc2l1:'Download .7z dari Langkah 2.', acc2l2:'Buka dengan <b>MT Manager</b>.', acc2l3:'Masukkan password dari video tutorial.', acc2l4:'Ikuti video untuk penempatan.',
+      acc3q:'Troubleshooting', acc3l1:'File tidak terbuka → install ulang MT Manager.', acc3l2:'Password ditolak → copy persis, tanpa spasi.', acc3l3:'Link mati → cek channel WhatsApp.',
+      fbYes:'Berhasil ✓', fbNo:'Gagal ✗', acc4q:'Changelog', acc5q:'Sebelumnya', cl1:'v1.0 — rilis awal',
+      qrText:'Scan untuk buka di HP', deskHint:'Desktop? Scan QR atau salin link',
+      footNote:'Semua unduhan via MediaFire · verifikasi sebelum install', liteMode:'Mode lite', liteOn:'Lite aktif',
+      navHome:'Home', navGet:'Ambil', navShare:'Bagikan', navStatus:'Status',
+      pwaTitle:'Tambah ke home', pwaSub:'Dapat drop lebih cepat.', pwaAdd:'Tambah', updated:'Diperbarui',
+      viewing:'sedang melihat', copied:'Disalin — tempel ke Status', copyFailed:'Gagal salin', linkCopied:'Link disalin',
+      voteCounted:'Suara tercatat', voted:'Kamu sudah memilih', thanksVote:'Terima kasih sudah memilih',
+      unlocked:'Download terbuka', liteOnMsg:'Mode lite aktif', liteOffMsg:'Mode lite mati',
+      shareMsgPre:'Fearless FFH4X — Script, config & tool Free Fire 🔥\nGabung channel untuk update terbaru:\n',
+      androidDet:'Android terdeteksi · pakai MT Manager untuk buka file', iosDet:'iOS terdeteksi · script ini hanya untuk Android',
+      fwYes:'Makasih ✓', fwNo:'Dicatat', langSwitched:'Bahasa: {x}' },
+    ar:{ _flag:'🇸🇦', _code:'AR', tag:'سكربتات وإعدادات وأدوات فري فاير', status:'متصّل',
+      countdownLbl:'الإصدار القادم', refreshNow:'اضغط للتحديث', refreshAgo:'حُدّث قبل {s} ث',
+      statVisits:'الزيارات', statToday:'اليوم', statDownloads:'التحميلات', statTime:'الوقت',
+      warn:'<b>1.6 كيلوبايت هي إعداد، ليست الأداة.</b> اقرأ الشرح قبل التثبيت.',
+      pollQ:'ما الذي يجب أن يصدر <span>الآن</span>؟', pollLiveNow:'مباشر · يُحدَّث كل 30 ث',
+      optAimbot:'إعداد الأيم بوت', optSens:'حزمة الحساسية', optHud:'تخطيط الواجهة', optMacro:'أداة الماكرو',
+      pollVotes:'صوت', pollTap:'اضغط للتصويت',
+      step1:'الخطوة 1 — انضم للجميع', step2:'الخطوة 2 — تحميل',
+      yt:'قناة يوتيوب', ytSub:'@fearlessxitt · فيديوهات وإصدارات', main:'القناة الرئيسية', mainSub:'واتساب · التحديثات أولاً', backup:'احتياطية', backup2:'احتياطية 2.0',
+      copyAll:'انسخ كل الروابط', copyAllToast:'تم نسخ جميع الروابط',
+      gateNote:'افتح الأربعة لفتح <b>الخطوة 2</b>.',
+      shareBtn:'شارك هذه الصفحة', dlSub:'v1.0 · 1.6 ك.ب · 7z · يتطلب كلمة مرور',
+      tutTitle:'الشرح + كلمة المرور', tutSub:'فيديو يوتيوب',
+      reqLabel:'المتطلبات', mtSub:'من Fearless EXE · APK', srSub:'أندرويد · 10.10.56 · APK',
+      howLabel:'طريقة الاستخدام',
+      acc1q:'لماذا حجم الملف 1.6 ك.ب فقط؟', acc1a:'إنه إعداد، ليس الأداة. MT Manager و Shadowrocket يقومان بالعمل الأساسي. هذا الملف يخبرهما بما يفعلان. شاهد الشرح.',
+      acc2q:'تثبيت السكربت', acc2l1:'حمّل ملف .7z من الخطوة 2.', acc2l2:'افتحه بـ <b>MT Manager</b>.', acc2l3:'أدخل كلمة المرور من فيديو الشرح.', acc2l4:'اتبع الفيديو للتركيب.',
+      acc3q:'حل المشاكل', acc3l1:'الملف لا يفتح → أعد تثبيت MT Manager.', acc3l2:'كلمة المرور مرفوضة → انسخها بالضبط، بدون مسافات.', acc3l3:'الرابط لا يعمل → تحقق من قنوات واتساب.',
+      fbYes:'يعمل ✓', fbNo:'لا يعمل ✗', acc4q:'سجل التغييرات', acc5q:'صدر سابقاً', cl1:'v1.0 — الإصدار الأول',
+      qrText:'امسح لفتح على هاتفك', deskHint:'على الكمبيوتر؟ امسح رمز QR أو انسخ الرابط',
+      footNote:'جميع التحميلات عبر MediaFire · تحقق قبل التثبيت', liteMode:'الوضع الخفيف', liteOn:'خفيف',
+      navHome:'الرئيسية', navGet:'تحميل', navShare:'مشاركة', navStatus:'الحالة',
+      pwaTitle:'أضف إلى الشاشة', pwaSub:'احصل على الإصدارات أسرع.', pwaAdd:'إضافة', updated:'آخر تحديث',
+      viewing:'يشاهدون الآن', copied:'تم النسخ — الصقه في الحالة', copyFailed:'فشل النسخ', linkCopied:'تم نسخ الرابط',
+      voteCounted:'تم تسجيل صوتك', voted:'لقد صوّت بالفعل', thanksVote:'شكراً لتصويتك',
+      unlocked:'تم فتح التحميل', liteOnMsg:'تم تشغيل الوضع الخفيف', liteOffMsg:'تم إيقاف الوضع الخفيف',
+      shareMsgPre:'Fearless FFH4X — سكربتات وإعدادات فري فاير 🔥\nانضم للقناة لأحدث الإصدارات:\n',
+      androidDet:'تم اكتشاف أندرويد · استخدم MT Manager لفتح الملف', iosDet:'تم اكتشاف iOS · هذا السكربت لأندرويد فقط',
+      fwYes:'شكراً ✓', fwNo:'تم', langSwitched:'اللغة: {x}' }
+  };
+
+  let lang = localStorage.getItem('ffh4x_lang') || 'en';
+  if (!T[lang]) lang = 'en';
+
+  const toast = document.getElementById('toast');
+  let toastTimer;
+  function say(msg){
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=>toast.classList.remove('show'), 1800);
+  }
+  function t(k){ return T[lang][k] ?? T.en[k] ?? k; }
+  function tf(k, vars){
+    let s = t(k);
+    for (const key in vars) s = s.replace('{'+key+'}', vars[key]);
+    return s;
+  }
+
+  /* ── language ── */
+  function applyLang(code){
+    lang = code;
+    localStorage.setItem('ffh4x_lang', code);
+    const tr = T[code];
+    document.documentElement.lang = code;
+    document.documentElement.dir = code === 'ar' ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const k = el.dataset.i18n;
+      if (tr[k]) el.textContent = tr[k];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+      const k = el.dataset.i18nHtml;
+      if (tr[k]) el.innerHTML = tr[k];
+    });
+    document.getElementById('langFlag').textContent = tr._flag;
+    document.getElementById('langCode').textContent = tr._code;
+    document.querySelectorAll('#langMenu button').forEach(b=>{
+      b.classList.toggle('active', b.dataset.lang === code);
+    });
+    document.getElementById('updated').textContent = tr.updated + ' 2026-10-10';
+    document.getElementById('liteLabel').textContent =
+      document.body.classList.contains('lite') ? tr.liteOn : tr.liteMode;
+    const v = document.getElementById('liveNow');
+    if (v.dataset.count) v.textContent = v.dataset.count + ' ' + tr.viewing;
+    paintDevice();
+  }
+
+  const langBtn = document.getElementById('langBtn');
+  const langMenu = document.getElementById('langMenu');
+  langBtn.addEventListener('click', e=>{ e.stopPropagation(); langMenu.classList.toggle('open'); });
+  document.addEventListener('click', ()=> langMenu.classList.remove('open'));
+  langMenu.querySelectorAll('button').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      applyLang(b.dataset.lang);
+      langMenu.classList.remove('open');
+      say(tf('langSwitched', { x: T[lang]._code }));
+    });
+  });
+
+  /* ── lite ── */
+  const liteToggle = document.getElementById('liteToggle');
+  const liteLabel = document.getElementById('liteLabel');
+  function applyLite(on){
+    document.body.classList.toggle('lite', on);
+    liteToggle.classList.toggle('on', on);
+    liteLabel.textContent = on ? t('liteOn') : t('liteMode');
+  }
+  applyLite(localStorage.getItem('ffh4x_lite') === '1');
+  liteToggle.addEventListener('click', ()=>{
+    const on = !document.body.classList.contains('lite');
+    localStorage.setItem('ffh4x_lite', on ? '1' : '0');
+    applyLite(on);
+    say(on ? t('liteOnMsg') : t('liteOffMsg'));
+  });
+
+  /* ── stars ── */
+  const c = document.getElementById('stars'), ctx = c.getContext('2d');
+  let stars = [], w, h;
+  function resize(){
+    w = c.width = innerWidth; h = c.height = innerHeight;
+    const n = Math.min(70, Math.floor(w*h/22000));
+    stars = Array.from({length:n}, () => ({
+      x: Math.random()*w, y: Math.random()*h,
+      r: Math.random()*1.4+.3, a: Math.random()*.5+.2,
+      s: Math.random()*.25+.05, d: Math.random()>.5?1:-1
+    }));
+  }
+  function draw(){
+    ctx.clearRect(0,0,w,h);
+    for (const s of stars){
+      s.y -= s.s;
+      if (s.y < -2){ s.y = h+2; s.x = Math.random()*w; }
+      s.a += .004*s.d;
+      if (s.a > .75) s.d = -1;
+      if (s.a < .15) s.d = 1;
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 7);
+      ctx.fillStyle = 'rgba(0,224,94,'+s.a+')'; ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  resize(); addEventListener('resize', resize);
+  if (!reduce) draw();
+
+  /* ── confetti ── */
+  const confC = document.getElementById('confetti'), confCtx = confC.getContext('2d');
+  let confParts = [], confRAF = null, confW, confH;
+  function confResize(){ confW = confC.width = innerWidth; confH = confC.height = innerHeight; }
+  confResize(); addEventListener('resize', confResize);
+  function fireConfetti(){
+    if (reduce) return;
+    const colors = ['#00c853','#00e05e','#00e0a0','#0077ff','#ffffff'];
+    for (let i = 0; i < 90; i++){
+      confParts.push({
+        x: confW/2 + (Math.random()-0.5)*120,
+        y: confH*0.42,
+        vx: (Math.random()-0.5)*9,
+        vy: Math.random()*-11 - 4,
+        g: 0.4,
+        r: Math.random()*5 + 3,
+        c: colors[Math.floor(Math.random()*colors.length)],
+        a: 1,
+        rot: Math.random()*Math.PI,
+        vr: (Math.random()-0.5)*0.3
+      });
+    }
+    confC.classList.add('on');
+    if (!confRAF) confRAF = requestAnimationFrame(confTick);
+  }
+  function confTick(){
+    confCtx.clearRect(0,0,confW,confH);
+    for (let i = confParts.length-1; i >= 0; i--){
+      const p = confParts[i];
+      p.x += p.vx; p.y += p.vy; p.vy += p.g; p.rot += p.vr; p.a -= 0.008;
+      if (p.a <= 0 || p.y > confH+40){ confParts.splice(i,1); continue; }
+      confCtx.save();
+      confCtx.translate(p.x, p.y);
+      confCtx.rotate(p.rot);
+      confCtx.globalAlpha = p.a;
+      confCtx.fillStyle = p.c;
+      confCtx.fillRect(-p.r/2, -p.r/2, p.r, p.r*0.5);
+      confCtx.restore();
+    }
+    if (confParts.length) confRAF = requestAnimationFrame(confTick);
+    else { confRAF = null; confC.classList.remove('on'); confCtx.clearRect(0,0,confW,confH); }
+  }
+
+  /* ── scroll bar ── */
+  const bar = document.getElementById('progress');
+  addEventListener('scroll', () => {
+    const max = document.documentElement.scrollHeight - innerHeight;
+    bar.style.width = (max > 0 ? (document.documentElement.scrollTop/max)*100 : 0) + '%';
+  }, {passive:true});
+
+  /* ── clock ── */
+  const clock = document.getElementById('clock');
+  function tickClock(){
+    const d = new Date();
+    clock.textContent = String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0');
+  }
+  tickClock(); setInterval(tickClock, 10000);
+
+  /* ── countdown ── */
+  const cd = document.getElementById('countdown');
+  const target = new Date();
+  target.setDate(target.getDate() + 3);
+  target.setHours(0,0,0,0);
+  function tickCd(){
+    let diff = Math.max(0, target - Date.now());
+    const d = Math.floor(diff/86400000); diff -= d*86400000;
+    const hh = Math.floor(diff/3600000); diff -= hh*3600000;
+    const mm = Math.floor(diff/60000); diff -= mm*60000;
+    const ss = Math.floor(diff/1000);
+    cd.textContent = (d>0 ? d+'d ' : '') +
+      String(hh).padStart(2,'0')+':'+String(mm).padStart(2,'0')+':'+String(ss).padStart(2,'0');
+  }
+  tickCd(); setInterval(tickCd, 1000);
+
+  /* ── counters ── */
+  const visits = document.getElementById('visits');
+  const today = document.getElementById('today');
+  const downloads = document.getElementById('downloads');
+  const liveNow = document.getElementById('liveNow');
+  const refreshText = document.getElementById('refreshText');
+  const refreshChip = document.getElementById('refreshChip');
+  let lastRefresh = Date.now();
+
+  function fmt(n){
+    if (n >= 1e6) return (n/1e6).toFixed(1).replace('.0','')+'M';
+    if (n >= 1e3) return (n/1e3).toFixed(1).replace('.0','')+'K';
+    return String(n);
+  }
+  function roll(el, n, dur){
+    const start = performance.now(), from = 0;
+    function frame(now){
+      const t2 = Math.min(1, (now-start)/dur);
+      const e = 1 - Math.pow(1-t2, 3);
+      el.textContent = Math.floor(from + (n-from)*e);
+      if (t2 < 1) requestAnimationFrame(frame);
+      else el.textContent = n;
+    }
+    requestAnimationFrame(frame);
+  }
+  function hit(key, cb){
+    fetch(API+'/hit/'+NS+'/'+key).then(r=>r.json()).then(d=>cb(d.value)).catch(()=>cb(null));
+  }
+  function read(key, cb){
+    fetch(API+'/get/'+NS+'/'+key).then(r=>r.json()).then(d=>cb(d.value)).catch(()=>cb(null));
+  }
+
+  function loadVisits(animate){
+    read('visits', v => {
+      if (v === null){ visits.textContent = '—'; return; }
+      if (animate) roll(visits, v, 900); else visits.textContent = fmt(v);
+      document.getElementById('statVisits').classList.add('hot');
+      const count = Math.max(2, Math.floor(v/40) + Math.floor(Math.random()*4));
+      liveNow.dataset.count = count;
+      liveNow.textContent = count + ' ' + t('viewing');
+    });
+  }
+
+  hit('visits', v => {
+    if (v === null){ visits.textContent = '—'; return; }
+    roll(visits, v, 900);
+    document.getElementById('statVisits').classList.add('hot');
+    const count = Math.max(2, Math.floor(v/40) + Math.floor(Math.random()*4));
+    liveNow.dataset.count = count;
+    liveNow.textContent = count + ' ' + t('viewing');
+  });
+
+  const day = new Date().toISOString().slice(0,10);
+  function loadToday(){ hit('visits-'+day, v => { today.textContent = v === null ? '—' : fmt(v); }); }
+  function loadDownloads(){ read('downloads', v => { downloads.textContent = v === null ? '—' : fmt(v); }); }
+  loadToday(); loadDownloads();
+
+  setInterval(loadVisits, 20000);
+
+  function tickRefresh(){
+    const s = Math.floor((Date.now() - lastRefresh)/1000);
+    refreshText.textContent = tf('refreshAgo', { s });
+  }
+  tickRefresh(); setInterval(tickRefresh, 5000);
+
+  refreshChip.addEventListener('click', ()=>{
+    refreshChip.classList.add('spinning');
+    loadVisits(false);
+    loadDownloads();
+    lastRefresh = Date.now();
+    if (typeof window._pollRefresh === 'function') window._pollRefresh();
+    setTimeout(()=> refreshChip.classList.remove('spinning'), 1000);
+    if (navigator.vibrate) navigator.vibrate(6);
+  });
+
+  /* ── device ── */
+  const ua = navigator.userAgent;
+  const strip = document.getElementById('deviceStrip');
+  function paintDevice(){
+    if (/Android/i.test(ua)){
+      strip.className = 'device show android';
+      strip.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg> ' + t('androidDet');
+    } else if (/iPhone|iPad|iPod/i.test(ua)){
+      strip.className = 'device show ios';
+      strip.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> ' + t('iosDet');
+    }
+  }
+  paintDevice();
+
+  if (!/Android|iPhone|iPad|iPod|Mobile/i.test(ua)){
+    document.getElementById('desktopHint').classList.add('show');
+  }
+
+  /* ── cursor glow ── */
+  document.querySelectorAll('.link').forEach(el=>{
+    el.addEventListener('pointermove', e=>{
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', ((e.clientX-r.left)/r.width*100)+'%');
+      el.style.setProperty('--my', ((e.clientY-r.top)/r.height*100)+'%');
+    });
+  });
+
+  /* ── copy ── */
+  document.querySelectorAll('.copy').forEach(btn=>{
+    btn.addEventListener('click', async e=>{
+      e.preventDefault(); e.stopPropagation();
+      const url = btn.dataset.copy || btn.closest('a')?.dataset.copy;
+      if (!url) return;
+      try { await navigator.clipboard.writeText(url); say(t('linkCopied')); }
+      catch { say(t('copyFailed')); }
+      if (navigator.vibrate) navigator.vibrate(8);
+    });
+  });
+
+  document.getElementById('copyAll').addEventListener('click', async ()=>{
+    const list = [
+      'YouTube: https://www.youtube.com/@fearlessxitt',
+      'Main: https://whatsapp.com/channel/0029VbDIkfX3GJOotlw08M3E',
+      'Backup: https://whatsapp.com/channel/0029Vb8dD7a5q08gPKk13w2R',
+      'Backup 2.0: https://whatsapp.com/channel/0029VbEGYSlIXnlnVTIs1b2P'
+    ].join('\n');
+    try { await navigator.clipboard.writeText(list); say(t('copyAllToast')); }
+    catch { say(t('copyFailed')); }
+    if (navigator.vibrate) navigator.vibrate(8);
+  });
+
+  /* ── download counter ── */
+  document.getElementById('downloadBtn').addEventListener('click', ()=>{
+    fetch(API+'/hit/'+NS+'/downloads').catch(()=>{});
+    if (navigator.vibrate) navigator.vibrate(10);
+  });
+
+  /* ── gate — no skip ── */
+  const joins = document.querySelectorAll('.join');
+  const dlBtn = document.getElementById('downloadBtn');
+  const gateFill = document.getElementById('gateFill');
+  const gateNote = document.getElementById('gateNote');
+  const gateCount = document.getElementById('gateCount');
+  const CIRC = 377;
+  const opened = new Set(JSON.parse(sessionStorage.getItem('ffh4x_opened') || '[]'));
+
+  function paintRing(){
+    const pct = opened.size / joins.length;
+    gateFill.style.strokeDashoffset = CIRC * (1 - pct);
+  }
+  function paint(){
+    gateCount.textContent = opened.size + ' / ' + joins.length;
+    joins.forEach(a => { if (opened.has(a.href)) a.classList.add('done'); });
+    paintRing();
+    if (opened.size >= joins.length) unlock();
+  }
+  paint();
+
+  joins.forEach(a=>{
+    a.addEventListener('click', ()=>{
+      opened.add(a.href);
+      sessionStorage.setItem('ffh4x_opened', JSON.stringify([...opened]));
+      a.classList.add('done');
+      if (navigator.vibrate) navigator.vibrate(10);
+      paint();
+    });
+  });
+
+  let unlockedOnce = false;
+  function unlock(){
+    if (!dlBtn.classList.contains('locked')) return;
+    dlBtn.classList.remove('locked');
+    dlBtn.classList.add('unlocking');
+    gateNote.innerHTML = '<b>✓</b> ' + t('unlocked');
+    setTimeout(()=>dlBtn.classList.remove('unlocking'), 800);
+    if (navigator.vibrate) navigator.vibrate([12, 40, 12]);
+    say(t('unlocked'));
+    if (!unlockedOnce){ unlockedOnce = true; fireConfetti(); }
+  }
+
+  /* ── live poll ── */
+  const poll = document.getElementById('poll');
+  const opts = [...poll.querySelectorAll('.opt')];
+  const totalEl = document.getElementById('pollTotal');
+  const msgEl = document.getElementById('pollMsg');
+  const VOTE_KEY = 'ffh4x_poll_vote_2026_10';
+  if (localStorage.getItem(VOTE_KEY)) poll.classList.add('results');
+
+  function paintPoll(counts){
+    const total = counts.reduce((a,b) => a+b, 0);
+    totalEl.textContent = total;
+    opts.forEach((opt, i) => {
+      const pct = total ? Math.round((counts[i]/total)*100) : 0;
+      opt.querySelector('.bar').style.width = pct + '%';
+      opt.querySelector('.pct').textContent = pct + '%';
+    });
+  }
+  function fetchPoll(cb){
+    Promise.all(opts.map(opt =>
+      fetch(API+'/get/'+NS+'/'+opt.dataset.key)
+        .then(r => r.json()).then(d => d.value).catch(() => 0)
+    )).then(cb);
+  }
+  fetchPoll(paintPoll);
+  window._pollRefresh = () => fetchPoll(paintPoll);
+
+  opts.forEach(opt => {
+    opt.addEventListener('click', () => {
+      if (localStorage.getItem(VOTE_KEY)) { say(t('voted')); return; }
+      localStorage.setItem(VOTE_KEY, opt.dataset.key);
+      opt.classList.add('voted');
+      poll.classList.add('results');
+      msgEl.textContent = t('thanksVote');
+      fetch(API+'/hit/'+NS+'/'+opt.dataset.key)
+        .then(r => r.json())
+        .then(() => fetchPoll(paintPoll))
+        .catch(() => fetchPoll(paintPoll));
+      if (navigator.vibrate) navigator.vibrate(12);
+      say(t('voteCounted'));
+    });
+  });
+  setInterval(() => fetchPoll(paintPoll), 30000);
+
+  /* ── feedback ── */
+  document.querySelectorAll('.fb').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      e.preventDefault();
+      const fb = btn.dataset.fb;
+      const key = 'ffh4x_fb_' + new Date().toISOString().slice(0,10);
+      const data = JSON.parse(localStorage.getItem(key) || '{"yes":0,"no":0}');
+      data[fb] = (data[fb]||0) + 1;
+      localStorage.setItem(key, JSON.stringify(data));
+      btn.textContent = fb === 'yes' ? t('fwYes') : t('fwNo');
+      btn.disabled = true;
+    });
+  });
+
+  /* ── share ── */
+  function shareText(){ return t('shareMsgPre') + SHARE_URL; }
+  async function doShare(){
+    const text = shareText();
+    if (navigator.share){
+      try { await navigator.share({ title:'Fearless FFH4X', text, url: SHARE_URL }); } catch {}
+    } else {
+      try { await navigator.clipboard.writeText(text); say(t('copied')); }
+      catch { say(t('copyFailed')); }
+    }
+  }
+  document.getElementById('shareBtn').addEventListener('click', doShare);
+  function shareToStatus(){
+    window.open('https://wa.me/?text=' + encodeURIComponent(shareText()), '_blank');
+  }
+
+  document.querySelectorAll('#nav [data-nav]').forEach(el=>{
+    el.addEventListener('click', e=>{
+      const act = el.dataset.nav;
+      if (act === 'share'){ e.preventDefault(); doShare(); }
+      else if (act === 'status'){ e.preventDefault(); shareToStatus(); }
+      else if (act === 'top'){ e.preventDefault(); scrollTo({top:0, behavior:'smooth'}); }
+      if (navigator.vibrate) navigator.vibrate(6);
+    });
+  });
+
+  /* ── QR ── */
+  if (!/Android|iPhone|iPad|iPod|Mobile/i.test(ua)){
+    document.getElementById('qrImg').src =
+      'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' +
+      encodeURIComponent(SHARE_URL) + '&bgcolor=ffffff&color=070707';
+    document.getElementById('qrBlock').classList.add('show');
+  }
+
+  /* ── PWA ── */
+  const pwa = document.getElementById('pwa');
+  const pwaInstall = document.getElementById('pwaInstall');
+  let deferred = null;
+  addEventListener('beforeinstallprompt', e=>{
+    e.preventDefault(); deferred = e;
+    if (!localStorage.getItem('ffh4x_pwa_dismissed')) pwa.classList.add('show');
+  });
+  pwaInstall.addEventListener('click', async ()=>{
+    if (!deferred) return;
+    deferred.prompt();
+    await deferred.userChoice;
+    deferred = null;
+    pwa.classList.remove('show');
+  });
+  document.getElementById('pwaDismiss').addEventListener('click', ()=>{
+    pwa.classList.remove('show');
+    localStorage.setItem('ffh4x_pwa_dismissed', '1');
+  });
+
+  applyLang(lang);
+})();
+</script>
+</body>
+</html>

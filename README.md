@@ -1,10 +1,10 @@
 <div align="center">
 
-<img src="https://cdn.phototourl.com/member/2026-10-10-37264725-7f3b-4b0d-aade-93a68df460df.png" alt="Fearless FFH4X" width="160" />
+<img src="https://cdn.phototourl.com/member/2026-10-10-37264725-7f3b-4b0d-aade-93a68df460df.png" alt="Fearless FFH4X" width="170" />
 
 # Fearless FFH4X
 
-**Scripts, configs and tools for Free Fire — built clean, built fast.**
+**Scripts, configs and tools for Free Fire — delivered clean.**
 
 [![Live](https://img.shields.io/badge/live-brazilianscript.netlify.app-00c853?style=for-the-badge&logo=netlify&logoColor=white)](https://brazilianscript.netlify.app)
 [![YouTube](https://img.shields.io/badge/YouTube-@fearlessxitt-ff0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@fearlessxitt)
@@ -19,9 +19,11 @@
 
 ## Overview
 
-A single static site that serves Free Fire players a set of tools, drops, and an assistant — with nothing running behind it except a Netlify Function for AI. No database, no framework, no build step, no analytics. Loads in under a second on a 3G connection. Works on any phone from 2018 onwards.
+A single static site that serves Free Fire players a set of tools, drops, and an assistant — with nothing running behind it except a Netlify Function for AI. No database. No framework. No build step. No analytics.
 
-Every page is a self-contained HTML file. Edit it in a text editor, drop it into Netlify, done.
+Every page is a self-contained HTML file. Edit in a text editor, drop into Netlify, live. Loads in under a second on a 3G connection. Works on any phone from 2018 onwards.
+
+Everything is client-side. Nothing is uploaded. Nothing is stored. No data leaves your browser.
 
 **Live:** https://brazilianscript.netlify.app
 
@@ -31,6 +33,9 @@ Every page is a self-contained HTML file. Edit it in a text editor, drop it into
 
 - [Overview](#overview)
 - [What's inside](#whats-inside)
+  - [Landing page](#landing-page--indexhtml)
+  - [Fearless AI](#fearless-ai--aihtml)
+  - [Fearless Toolbox](#fearless-toolbox--toolboxhtml)
 - [Screens](#screens)
 - [Stack](#stack)
 - [Project structure](#project-structure)
@@ -49,23 +54,25 @@ Every page is a self-contained HTML file. Edit it in a text editor, drop it into
 
 ## What's inside
 
-### `index.html` — Landing page
+### Landing page — `index.html`
 
 The public hub. Everything a visitor needs in one screen.
 
-- **Gate system** — download stays locked until all four channels have been opened. Progress ring fills in real time. Confetti fires on unlock.
+- **Gate system** — download stays locked until all four channels are opened. Progress ring fills in real time. Confetti fires on unlock.
 - **Live counters** — total visits, today's visits, downloads, live viewers. Real numbers, real API.
 - **Countdown** — to the next drop, in the visitor's local time.
 - **Live poll** — global votes on what should drop next. Updates every 30 seconds.
 - **Five languages** — English, Spanish, Portuguese, Indonesian, Arabic.
 - **RTL support** — the entire layout mirrors when Arabic is selected.
-- **Share system** — share sheet on mobile, clipboard fallback on desktop, native WhatsApp Status integration.
-- **Device detection** — shows Android users a hint about MT Manager, warns iOS users that the script is Android-only.
-- **Progressive Web App** — installable on Android home screen. Works offline for cached pages.
+- **Share system** — native share sheet on mobile, clipboard fallback on desktop, WhatsApp Status integration.
+- **Device detection** — Android users get a hint about MT Manager, iOS users get a warning that the script is Android-only.
+- **Progressive Web App** — installable on the Android home screen.
 - **Lite mode** — one tap kills every animation and heavy effect for slow connections.
 - **QR code** — auto-generated for desktop visitors so they can hand off to their phone.
+- **Auto-refresh chip** — "updated Xs ago," one tap re-pulls counters and poll.
+- **Copy-all links** — one button copies every channel link.
 
-### `ai.html` — Fearless AI
+### Fearless AI — `ai.html`
 
 A working chat interface with streaming replies.
 
@@ -79,9 +86,9 @@ A working chat interface with streaming replies.
 - **Tone and length controls** — casual, formal, brief. Short, normal, detailed.
 - **Language lock** — force replies in a chosen language regardless of input.
 - **Suggestions engine** — type any category, get 20 fresh feature ideas. Live from the model.
-- **Offline guard** — if the network drops, the page shows a red error, not a fake answer.
+- **Online-only mode** — if the network drops, the page shows a red error, no fake answers.
 
-### `toolbox.html` — Fearless Toolbox
+### Fearless Toolbox — `toolbox.html`
 
 Four independent security and dev tools, all client-side.
 
@@ -104,7 +111,7 @@ Four independent security and dev tools, all client-side.
 
 </div>
 
-*Screenshots go in a `screenshots/` folder at the repo root.*
+*Screenshots go in a `screenshots/` folder at the repo root. Take them on your phone — full page, browser chrome hidden.*
 
 ---
 
